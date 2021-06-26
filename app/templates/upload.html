@@ -2,26 +2,34 @@
 
 <html lang="en">
 <head>
-  <meta charset="utf-8">
 
-  <title>Upload new File</title>
-  <meta name="description" content="List of Files">
-  <meta name="idontknow" content="SitePoint">
+    <meta charset="UTF-8">
 
+    <link rel="stylesheet" 
+     href="../static/js/dropzone-5.7.0/dist/min/dropzone.min.css"/>
+
+     <link rel="stylesheet" 
+     href="../static/js/dropzone-5.7.0/dist/min/basic.min.css"/>
+
+    <script src="../static/js/dropzone-5.7.0/dist/dropzone.js"></script>
+
+    <title>File Dropper</title>
 </head>
-
 <body>
-    <div class="container">
-					<h1>Upload new File</h1>
-					<form method=post enctype=multipart/form-data>
-				  		<input type=file name=file>
-				  		<input type=submit value=Upload>
-					</form>
-	</div>
 
+<form method="POST" class="dropzone dz-clickable" 
+      id="dropper" enctype="multipart/form-data">
+</form>
 
+<script type="application/javascript">
+    Dropzone.options.dropper = {
+        paramName: 'file',
+        chunking: true,
+        forceChunking: true,
+        url: '/ftp/upload',
+        maxFilesize: 5*1025, // megabytes
+        chunkSize: 1000000 // bytes
+    }
+</script>
 </body>
 </html>
-
-
-
